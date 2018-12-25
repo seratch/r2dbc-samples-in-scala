@@ -1,0 +1,12 @@
+language: scala
+sudo: false
+scala:
+  - 2.12.8
+jdk:
+  - oraclejdk8
+  - openjdk11
+before_script:
+  - psql -c "CREATE ROLE sa WITH SUPERUSER LOGIN PASSWORD 'sa';" -U postgres
+  - psql -c "CREATE DATABASE r2dbc;" -U postgres
+script:
+  sbt ++$TRAVIS_SCALA_VERSION scalafmtSbtCheck scalafmtCheck test
