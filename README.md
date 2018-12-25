@@ -1,6 +1,6 @@
 # R2DBC First Example in Scala
 
-[![Build Status](https://travis-ci.org/seratch/r2dbc-examples-scala.svg?branch=master)](https://travis-ci.org/seratch/r2dbc-examples-scala)
+[![Build Status](https://travis-ci.org/seratch/r2dbc-samples-in-scala.svg?branch=master)](https://travis-ci.org/seratch/r2dbc-samples-in-scala)
 
 This repository demonstrates how to use [R2DBC - Reactive Relational Database Connectivity](http://r2dbc.io/) in Scala.
 
