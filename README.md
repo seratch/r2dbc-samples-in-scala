@@ -44,7 +44,7 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-java8-compat" % "0.9.0
 
 Here is a simple code example to run queries on H2 in-memory database. Apart from the part to build `io.r2dbc.client.R2dbc`, the exactly same code works for PostgreSQL. 
 
-To make the example simple, the code intentionally does blocking operations. Needless to say, you must NOT do the same in real application code but following the best practices to leverage the benefits of reactive / non-blocking model.
+To make the example simple, the code intentionally does blocking operations. Needless to say, you must NOT do the same in real application code. Follow the best practices to leverage the benefits of reactive / non-blocking model.
 
 ```scala
 val config = io.r2dbc.h2.H2ConnectionConfiguration.builder().url("mem:sample1").build()
@@ -52,6 +52,7 @@ val r2dbc  = new io.r2dbc.client.R2dbc(new io.r2dbc.h2.H2ConnectionFactory(confi
 
 // Create the table beforehand
 r2dbc
+  // Don't use text type, R2DBC doesn't work with it as of Dec 2018
   .withHandle(_.execute("create table sample (id bigint primary key, name varchar(100))"))
   .blockFirst() // Flux#blockFirst()
 
