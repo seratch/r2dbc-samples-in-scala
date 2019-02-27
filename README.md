@@ -12,7 +12,7 @@ As of Dec 2018, R2DBC is still under the development. Thus, there are still many
 
 In this example, I use [`r2dbc-client`](https://github.com/r2dbc/r2dbc-client) which is the reference implementation of [`r2dbc-spi`](https://github.com/r2dbc/r2dbc-spi), the service provider interface. `r2dbc-client` heavily depends on [Reactor](https://projectreactor.io/), whereas the R2DBC SPI doesn't have any relatiojns with Reactor. The SPI relies on only [Reactive Streams](http://www.reactive-streams.org/). Thanks to the  thin SPI interface, it should be much easier to implement your own R2DBC clients than toilsome JDBC drivers.
 
-While working with `r2dbc-client`, you will see lots of [`Flux`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html)/[`Mono`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html) objects. As far as I know, Reactor is not so popular in the Scala world (The Scala community already has many other options to achieve the same goal). You may feel like "What's `Flux`/`Mono`...? Do I need to learn ways to use it?" Don't worry, be happy. You don't need to learn the details of it. They are just enriched `Publisher` objects in the context of Reactive Streams. So, if you're familiar with the `Publisher`, you can simply handle `Flux`/`Mono` as `Publisher`. Otherwise, I recommend you to transform those types to your favorites such as [`Observable`](https://monix.io/docs/3x/reactive/observable.html) in [monix-reactive](https://monix.io/docs/3x/#monix-reactive), [`Stream` in fs2](https://fs2.io/guide.html), etc.
+While working with `r2dbc-client`, you will see lots of [`Flux`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html)/[`Mono`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html) objects. As far as I know, Reactor is not so popular in the Scala world (The Scala community already has many other options to achieve the same goal). You may feel like "What's `Flux`/`Mono`...? Do I need to learn ways to use it?" Don't worry, be happy. You don't need to learn the details of it. They are just enriched `Publisher` objects in the context of Reactive Streams. So, if you're familiar with the `Publisher`, you can simply handle `Flux`/`Mono` as `Publisher`. Otherwise, I recommend transforming those types to your favorites such as [`Observable`](https://monix.io/docs/3x/reactive/observable.html) in [monix-reactive](https://monix.io/docs/3x/#monix-reactive), [`Stream` in fs2](https://fs2.io/guide.html), etc.
 
 # Getting Started
 
@@ -79,7 +79,7 @@ val result: reactor.core.publisher.Flux[Sample] = {
 }
 ```
 
-To work with `Publisher` more easily, I recommend you to use `Observable` from `monix-reactive`. Refer to [the Monix document](https://monix.io/docs/3x/reactive/observable.html) for details.
+To work with `Publisher` more easily, you can use `Observable` from `monix-reactive`. Refer to [the Monix document](https://monix.io/docs/3x/reactive/observable.html) for details.
 
 ```scala
 // simple example to run with monix-reactive
